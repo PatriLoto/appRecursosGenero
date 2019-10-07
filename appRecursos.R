@@ -10,11 +10,12 @@ library(janitor)
 # Pre-procesamiento ----------------------------
 # leo los recursos compilados por Chicasentecnología
 
-reading_list <- read_tsv("D:/Patri/RPROJECTS/appCETecnologia/Reservorio.txt")
+#reading_list <- read_tsv("D:/Patri/RPROJECTS/appCETecnologia/Reservorio.txt")
+reading_list <- read_tsv("Reservorio.txt")
 
 prueba <-reading_list%>%janitor::clean_names()
 prueba
-prueba2<-prueba%>%mutate(apellido_autor = toupper(apellido_autor), titulo = toupper(titulo),nombre_revista= toupper(nombre_revista), etiquetas= toupper(etiquetas), idioma=toupper(idioma), genero_autor= toupper(genero_autor))
+prueba2<-prueba%>%mutate(apellido_autor = toupper(prueba$apellido_autor), titulo = toupper(titulo),nombre_revista= toupper(nombre_revista), etiquetas= toupper(etiquetas), idioma=toupper(idioma), genero_autor= toupper(genero_autor))
 prueba2
 
 datatable(prueba2)
@@ -61,7 +62,7 @@ ui <- fluidPage(
   # credits
   div(p("Compilado por", a("@chicasentecnología", href = "https://twitter.com/chicasentec"), "y desarrollado por", a("@patriloto", href = "https://twitter.com/patriloto"), "usando los paquetes shiny y DT"), 
      # p("Blog:", a("davidsmale.netlify.com", href = "https://davidsmale.netlify.com/portfolio/")),
-      p("GitHub:", a("Recursos sobre Género", href = "https://github.com/patriloto/recursosGenero")),
+      p("GitHub:", a("Recursos sobre Género", href = "https://github.com/PatriLoto/appRecursosGenero")),
       style="text-align: right;")
   )))
 
@@ -73,7 +74,7 @@ server <- function(input, output) {
   output$tbl <- renderDT({
     
     datatable(reading_table2,
-              colnames = c('Título','Autor(es)','Revista','Año','Idioma','Género del Autor'),
+              colnames = c('Título','Autor(es)','Revista','Link','Año','Idioma','Género del Autor'),
               rownames = FALSE,
               escape = TRUE,
               class = 'display',
