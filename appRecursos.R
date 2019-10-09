@@ -30,6 +30,8 @@ datatable(prueba2)
  # mutate(title_link =  paste0("<a href='",link,"' target='_blank'>",titulo,"</a>")) %>%
   #select(title_link, apellido_autor, nombre_revista, ano, idioma, genero_autor)
 #datatable(reading_table)
+    
+URL link: <a href="https://www.google.com/">Google Homepage</a>
 
 reading_table2 <- prueba2 %>%
  #mutate(title_link =  paste0("<a href='",link,"' target='_blank'>", ,"</a>")) %>%
